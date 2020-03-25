@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Directories and files within
+bin/*
+
+# Logs
+*.log*
+
+# Project/IDE settings
+.idea/*
