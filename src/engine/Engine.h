@@ -11,8 +11,8 @@ namespace engine {
 
     class Engine {
     private:
-        std::unique_ptr<engine::Client> client_ptr;
-        std::unique_ptr<engine::Server> server_ptr;
+        std::unique_ptr<engine::Client> client_ptr = nullptr;
+        std::unique_ptr<engine::Server> server_ptr = nullptr;
 
         // Methods
         void init_client();
