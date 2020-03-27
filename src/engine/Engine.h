@@ -4,10 +4,11 @@
 #include <iostream>
 
 namespace engine {
-    class engine {
+    class Engine {
 
     public:
-        engine();
+        Engine();
+        //virtual ~Engine();
 
     private:
 

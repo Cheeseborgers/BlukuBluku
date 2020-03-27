@@ -1,8 +1,8 @@
-#include "engine.h"
+#include "Engine.h"
 
 namespace engine {
 
-    engine::engine() {
+    Engine::Engine() {
         std::cout << "engine created \n";
     }
 }
