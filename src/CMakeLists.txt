@@ -1,4 +1,4 @@
-# bluku bluku engine
+# bluku bluku Engine
 add_subdirectory(engine)
 
 # Generic test that uses conan libs
