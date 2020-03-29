@@ -1,3 +1,3 @@
-add_executable(blukuserver Server.cpp)
+add_executable(blukuserver server.cpp)
 
 target_link_libraries(blukuserver LINK_PUBLIC blukuengine)

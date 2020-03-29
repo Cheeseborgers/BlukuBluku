@@ -2,13 +2,18 @@
 #define BLUKUBLUKUGAME_CLIENT_H
 
 #include <iostream>
+#include <memory>
 
-namespace engine {
+#include "window.h"
+
+namespace engine::client {
     class Client {
 
     private:
+        std::unique_ptr<engine::client::display::Window> client_window_ptr = nullptr;
 
     public:
+        // Constructors
         Client();
     };
 

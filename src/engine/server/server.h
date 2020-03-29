@@ -3,12 +3,15 @@
 
 #include <iostream>
 
-namespace engine {
+namespace engine::server {
     class Server {
 
     private:
 
+        bool _running{false};
+
     public:
+
         Server();
     };
 

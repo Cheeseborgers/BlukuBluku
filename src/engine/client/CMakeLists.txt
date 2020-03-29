@@ -1,3 +1,3 @@
-add_executable(blukuclient Client.cpp)
+add_executable(blukuclient client.cpp)
 
 target_link_libraries(blukuclient LINK_PUBLIC blukuengine)
