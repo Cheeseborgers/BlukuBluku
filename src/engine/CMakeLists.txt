@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.5...3.16)
 # Listing the version is nice here since it sets lots of useful variables
 project(Blukuengine VERSION 1.0 LANGUAGES CXX)
 
+# GLFW
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
 add_library(blukuengine STATIC
         engine.cpp
         client/client.cpp
@@ -15,6 +20,7 @@ add_library(blukuengine STATIC
 
 add_subdirectory(include/glfw)
 add_subdirectory(include/glad)
+add_subdirectory(include/glm)
 
 target_link_libraries(blukuengine glfw glad)
 
