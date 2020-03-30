@@ -1,0 +1,14 @@
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/install/strip.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/install/local.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/edit_cache.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/uninstall.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/rebuild_cache.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/install.dir
+/home/fason/Downloads/glfw-3.3.2/CMakeFiles/list_install_components.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/edit_cache.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/install/strip.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/install/local.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/glfw.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/rebuild_cache.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/list_install_components.dir
+/home/fason/Downloads/glfw-3.3.2/src/CMakeFiles/install.dir
