@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "window.h"
+#include "states/state.h"
 
 #include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
@@ -16,11 +17,19 @@ namespace engine::client {
 
     private:
         std::unique_ptr<engine::client::display::Window> client_window_ptr = nullptr;
+        std::unique_ptr<engine::client::gamestate::State> client_gamestate_ptr = nullptr;
+
         bool _running;
 
         const float clear_colour_x = 0.2F;
         const float clear_colour_y = 0.3F;
         const float clear_colour_z = 0.3F;
+
+        constexpr static double limit_fps = 1.0 / 60.0;
+        int frames;
+
+
+        void init_states();
 
         void toggle_running_status();
 

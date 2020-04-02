@@ -9,14 +9,19 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
+
 add_library(blukuengine STATIC
         engine.cpp
         client/client.cpp
         client/client.h
         client/window.cpp
         client/window.h
+        client/states/state.cpp
+        client/states/state.h
         server/server.cpp
-        server/server.h)
+        server/server.h
+        client/states/state.cpp client/states/state.h)
+
 
 add_subdirectory(include/glfw)
 add_subdirectory(include/glad)
