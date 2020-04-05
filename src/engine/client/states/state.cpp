@@ -1,6 +1,6 @@
 #include "state.h"
 
-engine::client::gamestate::State::State() {
+engine::client::state::State::State() {
     std::cout << "State init\n";
 }
 

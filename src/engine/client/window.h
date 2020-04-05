@@ -34,6 +34,8 @@ namespace engine::client::display {
 
         void update();
 
+        void render();
+
         bool closed() { return glfwWindowShouldClose(m_window_ptr) != 0; }
     };
 

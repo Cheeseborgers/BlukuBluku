@@ -8,11 +8,27 @@ engine::client::Client::Client() {
     this->_running = false;
     this->frames = 0;
 
+    this->player_dir = "profiles";
+
+    // Init window
     this->client_window_ptr = std::make_unique<engine::client::display::Window>();
+
+
+    // Player data init
+    if (player_config::Player_config::check_player_config_dir_exists(this->player_dir)) {
+
+    } else {
+        player_config::Player_config::create_player_config_dir(this->player_dir);
+    }
+
+    std::cout << engine::client::player_config::Player_config::generate_hex_uid(6) << "\n"; //NOLINT
+
+    this->pl_ptr = std::make_unique<engine::client::player_config::Player_config>();
 
     this->init_states();
 
     std::cout << "Client initialisation (END) \n";
+
 }
 
 // Methods
@@ -48,7 +64,9 @@ void engine::client::Client::run() {
         // Render at maximum possible frames
         this->client_window_ptr->clear(this->clear_colour_x, this->clear_colour_y,
                                        this->clear_colour_z); // Render function
+        this->client_window_ptr->render();
         this->frames++;
+
 
         // Reset after one second
         if (glfwGetTime() - timer > 1.0) {
@@ -79,6 +97,6 @@ void engine::client::Client::toggle_running_status() {
 }
 
 void engine::client::Client::init_states() {
-    this->client_gamestate_ptr = std::make_unique<engine::client::gamestate::State>();
+    this->client_gamestate_ptr = std::make_unique<engine::client::state::State>();
 }
 

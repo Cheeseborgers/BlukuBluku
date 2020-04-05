@@ -113,4 +113,8 @@ namespace engine::client::display {
         glfwPollEvents();
     }
     //---------------------------------------------------------------------------------------------------------------//
+
+    void Window::render() {
+        //std::cout << this->m_title << "engine::client::display::Window::render() Rendering\n";
+    }
 }

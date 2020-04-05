@@ -6,6 +6,7 @@
 
 #include "window.h"
 #include "states/state.h"
+#include "player_config.h"
 
 #include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
@@ -17,7 +18,11 @@ namespace engine::client {
 
     private:
         std::unique_ptr<engine::client::display::Window> client_window_ptr = nullptr;
-        std::unique_ptr<engine::client::gamestate::State> client_gamestate_ptr = nullptr;
+        std::unique_ptr<engine::client::state::State> client_gamestate_ptr = nullptr;
+
+        const std::string player_dir;
+
+        std::unique_ptr<engine::client::player_config::Player_config> pl_ptr = nullptr;
 
         bool _running;
 

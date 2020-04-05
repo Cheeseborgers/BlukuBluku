@@ -3,16 +3,17 @@
 
 #include <iostream>
 
-namespace engine::client::gamestate {
+namespace engine::client::state {
 
     class State {
 
     private:
 
     public:
-
+        // Constructor
         State();
 
+        // Methods
     };
 
 }
