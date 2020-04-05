@@ -20,7 +20,7 @@ namespace engine::client {
         std::unique_ptr<engine::client::display::Window> client_window_ptr = nullptr;
         std::unique_ptr<engine::client::state::State> client_gamestate_ptr = nullptr;
 
-        const std::string player_dir;
+        std::string player_dir;
 
         std::unique_ptr<engine::client::player_config::Player_config> pl_ptr = nullptr;
 
