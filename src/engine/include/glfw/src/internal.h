@@ -374,7 +374,7 @@ struct _GLFWcontext {
 struct _GLFWwindow {
     struct _GLFWwindow *next;
 
-    // Window settings and state
+    // Window settings and states
     GLFWbool resizable;
     GLFWbool decorated;
     GLFWbool autoIconify;
@@ -582,7 +582,7 @@ struct _GLFWlibrary {
     _GLFW_OSMESA_LIBRARY_CONTEXT_STATE;
 };
 
-// Global state shared between compilation units of GLFW
+// Global states shared between compilation units of GLFW
 //
 extern _GLFWlibrary _glfw;
 

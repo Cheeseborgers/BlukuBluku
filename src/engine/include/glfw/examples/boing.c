@@ -346,7 +346,7 @@ void DrawBoingBall(void) {
     glRotatef(deg_rot_y, 0.0, 1.0, 0.0);
 
     /*
-     * Set OpenGL state for Boing ball.
+     * Set OpenGL states for Boing ball.
      */
     glCullFace(GL_FRONT);
     glEnable(GL_CULL_FACE);

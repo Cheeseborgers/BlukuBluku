@@ -381,7 +381,7 @@ static void keyboardHandleKeymap(void *data,
     state = xkb_state_new(keymap);
     if (!state) {
         _glfwInputError(GLFW_PLATFORM_ERROR,
-                        "Wayland: Failed to create XKB state");
+                        "Wayland: Failed to create XKB states");
         xkb_keymap_unref(keymap);
         return;
     }

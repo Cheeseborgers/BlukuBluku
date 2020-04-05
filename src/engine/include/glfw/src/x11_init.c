@@ -528,7 +528,7 @@ static void detectEWMH(void) {
     // We are now fairly sure that an EWMH-compliant WM is currently running
     // We can now start querying the WM about what features it supports by
     // looking in the _NET_SUPPORTED property on the root window
-    // It should contain a list of supported EWMH protocol and state atoms
+    // It should contain a list of supported EWMH protocol and states atoms
 
     Atom *supportedAtoms = NULL;
     const unsigned long atomCount =

@@ -183,7 +183,7 @@ const unsigned char floor_texture[F_TEX_WIDTH * F_TEX_HEIGHT] = {
 // Particle system global variables
 //========================================================================
 
-// This structure holds all state for a single particle
+// This structure holds all states for a single particle
 typedef struct {
     float x, y, z;     // Position in space
     float vx, vy, vz;  // Velocity vector

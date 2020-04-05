@@ -100,7 +100,7 @@ nk_glfw3_device_upload_atlas(const void *image, int width, int height)
 NK_API void
 nk_glfw3_render(enum nk_anti_aliasing AA)
 {
-    /* setup global state */
+    /* setup global states */
     struct nk_glfw_device *dev = &glfw.ogl;
     glPushAttrib(GL_ENABLE_BIT|GL_COLOR_BUFFER_BIT|GL_TRANSFORM_BIT);
     glDisable(GL_CULL_FACE);
@@ -184,7 +184,7 @@ nk_glfw3_render(enum nk_anti_aliasing AA)
         nk_buffer_free(&ebuf);
     }
 
-    /* default OpenGL state */
+    /* default OpenGL states */
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);

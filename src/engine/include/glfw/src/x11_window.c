@@ -170,7 +170,7 @@ static Bool isSelPropNewValueNotify(Display *display, XEvent *event, XPointer po
            event->xproperty.atom == notification->xselection.property;
 }
 
-// Translates an X event modifier state mask
+// Translates an X event modifier states mask
 //
 static int translateState(int state) {
     int mods = 0;

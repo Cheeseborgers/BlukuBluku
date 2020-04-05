@@ -26,7 +26,7 @@
  */
 /*
  * Draw a textured triangle with depth testing.  This is written against Intel
- * ICD.  It does not do state transition nor object memory binding like it
+ * ICD.  It does not do states transition nor object memory binding like it
  * should.  It also does no error checking.
  */
 

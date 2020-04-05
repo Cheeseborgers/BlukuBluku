@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Internal key state used for sticky keys
+// Internal key states used for sticky keys
 #define _GLFW_STICK 3
 
 // Internal constants for gamepad mapping source types

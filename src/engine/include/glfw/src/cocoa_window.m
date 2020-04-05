@@ -1081,7 +1081,7 @@ void _glfwPlatformSetWindowMonitor(_GLFWwindow *window,
 
         _glfwInputWindowMonitor(window, monitor);
 
-        // HACK: Allow the state cached in Cocoa to catch up to reality
+        // HACK: Allow the states cached in Cocoa to catch up to reality
         // TODO: Solve this in a less terrible way
         _glfwPlatformPollEvents();
 

@@ -41,7 +41,7 @@
 //
 // Any other global variable is a bug
 
-// Global state shared between compilation units of GLFW
+// Global states shared between compilation units of GLFW
 //
 _GLFWlibrary _glfw = {GLFW_FALSE};
 

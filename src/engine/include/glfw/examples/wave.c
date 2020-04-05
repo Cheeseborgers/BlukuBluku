@@ -158,7 +158,7 @@ void draw_scene(GLFWwindow *window) {
 
 
 //========================================================================
-// Initialize Miscellaneous OpenGL state
+// Initialize Miscellaneous OpenGL states
 //========================================================================
 
 void init_opengl(void) {

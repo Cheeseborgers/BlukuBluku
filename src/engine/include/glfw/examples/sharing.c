@@ -180,7 +180,7 @@ int main(int argc, char **argv) {
 
     glfwMakeContextCurrent(windows[1]);
 
-    // While objects are shared, the global context state is not and will
+    // While objects are shared, the global context states is not and will
     // need to be set up for each context
 
     glUseProgram(program);

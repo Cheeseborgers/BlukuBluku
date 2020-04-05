@@ -23,7 +23,7 @@
 //
 //========================================================================
 //
-// This test displays the state of every button and axis of every connected
+// This test displays the states of every button and axis of every connected
 // joystick and/or gamepad
 //
 //========================================================================
@@ -260,7 +260,7 @@ int main(void)
                 nk_layout_row_dynamic(nk, 30, 1);
                 nk_labelf(nk, NK_TEXT_LEFT, "Hardware GUID %s",
                           glfwGetJoystickGUID(joysticks[i]));
-                nk_label(nk, "Joystick state", NK_TEXT_LEFT);
+                nk_label(nk, "Joystick states", NK_TEXT_LEFT);
 
                 axes = glfwGetJoystickAxes(joysticks[i], &axis_count);
                 buttons = glfwGetJoystickButtons(joysticks[i], &button_count);
@@ -300,7 +300,7 @@ int main(void)
                     };
 
                     nk_labelf(nk, NK_TEXT_LEFT,
-                              "Gamepad state: %s",
+                              "Gamepad states: %s",
                               glfwGetGamepadName(joysticks[i]));
 
                     nk_layout_row_dynamic(nk, 30, 2);

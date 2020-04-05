@@ -96,7 +96,7 @@ static void handleAbsEvent(_GLFWjoystick *js, int code, int value) {
     }
 }
 
-// Poll state of absolute axes
+// Poll states of absolute axes
 //
 static void pollAbsState(_GLFWjoystick *js) {
     for (int code = 0; code < ABS_CNT; code++) {

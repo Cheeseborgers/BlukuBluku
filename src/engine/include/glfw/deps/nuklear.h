@@ -26,11 +26,11 @@
 /// 10. Credits section
 ///
 /// ## About
-/// This is a minimal state immediate mode graphical user interface toolkit
+/// This is a minimal states immediate mode graphical user interface toolkit
 /// written in ANSI C and licensed under public domain. It was designed as a simple
 /// embeddable user interface for application and does not have any dependencies,
 /// a default renderbackend or OS window and input handling but instead provides a very modular
-/// library approach by using simple input state for input and draw
+/// library approach by using simple input states for input and draw
 /// commands describing primitive shapes as output. So instead of providing a
 /// layered library that tries to abstract over a number of platform and
 /// render backends it only focuses on the actual UI.
@@ -45,7 +45,7 @@
 /// - Fully skinnable and customizable
 /// - Low memory footprint with total memory control if needed or wanted
 /// - UTF-8 support
-/// - No global or hidden state
+/// - No global or hidden states
 /// - Customizable library modules (you can compile and use only what you need)
 /// - Optional font baker and vertex buffer output
 ///
@@ -171,7 +171,7 @@
 /// ## Example
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// // init gui state
+/// // init gui states
 /// enum {EASY, HARD};
 /// static int op = EASY;
 /// static float value = 0.6f;
@@ -613,7 +613,7 @@ NK_SYMBOL_MAX
  *
  * =============================================================================*/
 /*/// ### Context
-/// Contexts are the main entry point and the majestro of nuklear and contain all required state.
+/// Contexts are the main entry point and the majestro of nuklear and contain all required states.
 /// They are used for window, memory, input, style, stack, commands and time management and need
 /// to be passed into all nuklear GUI specific functions.
 ///
@@ -710,7 +710,7 @@ NK_API int nk_init(struct nk_context*, struct nk_allocator*, const struct nk_use
 /*/// #### nk_init_custom
 /// Initializes a `nk_context` struct from two different either fixed or growing
 /// buffers. The first buffer is for allocating draw commands while the second buffer is
-/// used for allocating windows, panels and state tables.
+/// used for allocating windows, panels and states tables.
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// int nk_init_custom(struct nk_context *ctx, struct nk_buffer *cmds, struct nk_buffer *pool, const struct nk_user_font *font);
@@ -727,7 +727,7 @@ NK_API int nk_init(struct nk_context*, struct nk_allocator*, const struct nk_use
 */
 NK_API int nk_init_custom(struct nk_context*, struct nk_buffer *cmds, struct nk_buffer *pool, const struct nk_user_font*);
 /*/// #### nk_clear
-/// Resets the context state at the end of the frame. This includes mostly
+/// Resets the context states at the end of the frame. This includes mostly
 /// garbage collector tasks like removing windows or table not called and therefore
 /// used anymore.
 ///
@@ -775,10 +775,10 @@ NK_API void nk_set_user_data(struct nk_context*, nk_handle handle);
  *
  * =============================================================================*/
 /*/// ### Input
-/// The input API is responsible for holding the current input state composed of
+/// The input API is responsible for holding the current input states composed of
 /// mouse, key and text input states.
 /// It is worth noting that no direct OS or window handling is done in nuklear.
-/// Instead all input state has to be provided by platform specific code. This on one hand
+/// Instead all input states has to be provided by platform specific code. This on one hand
 /// expects more work from the user and complicates usage but on the other hand
 /// provides simple abstraction over a big number of platforms, libraries and other
 /// already provided functionality.
@@ -795,12 +795,12 @@ NK_API void nk_set_user_data(struct nk_context*, nk_handle handle);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// #### Usage
-/// Input state needs to be provided to nuklear by first calling `nk_input_begin`
-/// which resets internal state like delta mouse position and button transistions.
-/// After `nk_input_begin` all current input state needs to be provided. This includes
+/// Input states needs to be provided to nuklear by first calling `nk_input_begin`
+/// which resets internal states like delta mouse position and button transistions.
+/// After `nk_input_begin` all current input states needs to be provided. This includes
 /// mouse motion, button and key pressed and released, text input and scrolling.
-/// Both event- or state-based input handling are supported by this API
-/// and should work without problems. Finally after all input state has been
+/// Both event- or states-based input handling are supported by this API
+/// and should work without problems. Finally after all input states has been
 /// mirrored `nk_input_end` needs to be called to finish input process.
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
@@ -827,13 +827,13 @@ NK_API void nk_set_user_data(struct nk_context*, nk_handle handle);
 /// --------------------|-------------------------------------------------------
 /// __nk_input_begin__  | Begins the input mirroring process. Needs to be called before all other `nk_input_xxx` calls
 /// __nk_input_motion__ | Mirrors mouse cursor position
-/// __nk_input_key__    | Mirrors key state with either pressed or released
-/// __nk_input_button__ | Mirrors mouse button state with either pressed or released
+/// __nk_input_key__    | Mirrors key states with either pressed or released
+/// __nk_input_button__ | Mirrors mouse button states with either pressed or released
 /// __nk_input_scroll__ | Mirrors mouse scroll values
 /// __nk_input_char__   | Adds a single ASCII text character into an internal text buffer
 /// __nk_input_glyph__  | Adds a single multi-byte UTF-8 character into an internal text buffer
 /// __nk_input_unicode__| Adds a single unicode rune into an internal text buffer
-/// __nk_input_end__    | Ends the input mirroring process by calculating state changes. Don't call any `nk_input_xxx` function referenced above after this call
+/// __nk_input_end__    | Ends the input mirroring process by calculating states changes. Don't call any `nk_input_xxx` function referenced above after this call
 */
 enum nk_keys {
 NK_KEY_NONE,
@@ -879,7 +879,7 @@ NK_BUTTON_MAX
 };
 /*/// #### nk_input_begin
 /// Begins the input mirroring process by resetting text, scroll
-/// mouse, previous mouse position and movement as well as key state transitions,
+/// mouse, previous mouse position and movement as well as key states transitions,
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_input_begin(struct nk_context*);
@@ -905,7 +905,7 @@ NK_API void nk_input_begin(struct nk_context*);
 */
 NK_API void nk_input_motion(struct nk_context*, int x, int y);
 /*/// #### nk_input_key
-/// Mirrors the state of a specific key to nuklear
+/// Mirrors the states of a specific key to nuklear
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_input_key(struct nk_context*, enum nk_keys key, int down);
@@ -919,7 +919,7 @@ NK_API void nk_input_motion(struct nk_context*, int x, int y);
 */
 NK_API void nk_input_key(struct nk_context*, enum nk_keys, int down);
 /*/// #### nk_input_button
-/// Mirrors the state of a specific mouse button to nuklear
+/// Mirrors the states of a specific mouse button to nuklear
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_input_button(struct nk_context *ctx, enum nk_buttons btn, int x, int y, int down);
@@ -1002,7 +1002,7 @@ NK_API void nk_input_glyph(struct nk_context*, const nk_glyph);
 NK_API void nk_input_unicode(struct nk_context*, nk_rune);
 /*/// #### nk_input_end
 /// End the input mirroring process by resetting mouse grabbing
-/// state to ensure the mouse cursor is not grabbed indefinitely.
+/// states to ensure the mouse cursor is not grabbed indefinitely.
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_input_end(struct nk_context *ctx);
@@ -1406,14 +1406,14 @@ nk_draw_foreach(cmd, ctx, b) for ((cmd)=nk__draw_begin(ctx, b); (cmd)!=0; (cmd)=
  *
  * =============================================================================
 /// ### Window
-/// Windows are the main persistent state used inside nuklear and are life time
+/// Windows are the main persistent states used inside nuklear and are life time
 /// controlled by simply "retouching" (i.e. calling) each window each frame.
 /// All widgets inside nuklear can only be added inside the function pair `nk_begin_xxx`
 /// and `nk_end`. Calling any widgets outside these two functions will result in an
-/// assert in debug or no state change in release mode.<br /><br />
+/// assert in debug or no states change in release mode.<br /><br />
 ///
-/// Each window holds frame persistent state like position, size, flags, state tables,
-/// and some garbage collected internal persistent widget state. Each window
+/// Each window holds frame persistent states like position, size, flags, states tables,
+/// and some garbage collected internal persistent widget states. Each window
 /// is linked into a window stack list which determines the drawing and overlapping
 /// order. The topmost window thereby is the currently active window.<br /><br />
 ///
@@ -1496,7 +1496,7 @@ nk_draw_foreach(cmd, ctx, b) for ((cmd)=nk__draw_begin(ctx, b); (cmd)!=0; (cmd)=
 /// nk_window_get_size                  | Returns the size with width and height of the currently processed window
 /// nk_window_get_width                 | Returns the width of the currently processed window
 /// nk_window_get_height                | Returns the height of the currently processed window
-/// nk_window_get_panel                 | Returns the underlying panel which contains all processing state of the current window
+/// nk_window_get_panel                 | Returns the underlying panel which contains all processing states of the current window
 /// nk_window_get_content_region        | Returns the position and size of the currently visible and non-clipped space inside the currently processed window
 /// nk_window_get_content_region_min    | Returns the upper rectangle position of the currently visible and non-clipped space inside the currently processed window
 /// nk_window_get_content_region_max    | Returns the upper rectangle position of the currently visible and non-clipped space inside the currently processed window
@@ -1599,7 +1599,7 @@ NK_API int nk_begin(struct nk_context *ctx, const char *title, struct nk_rect bo
 NK_API int nk_begin_titled(struct nk_context *ctx, const char *name, const char *title, struct nk_rect bounds, nk_flags flags);
 /*/// #### nk_end
 /// Needs to be called at the end of the window building process to process scaling, scrollbars and general cleanup.
-/// All widget calls after this functions will result in asserts or no state changes
+/// All widget calls after this functions will result in asserts or no states changes
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_end(struct nk_context *ctx);
@@ -1707,7 +1707,7 @@ NK_API float nk_window_get_width(const struct nk_context*);
 */
 NK_API float nk_window_get_height(const struct nk_context*);
 /*/// #### nk_window_get_panel
-/// Returns the underlying panel which contains all processing state of the current window.
+/// Returns the underlying panel which contains all processing states of the current window.
 ///
 /// !!! WARNING
 ///     Only call this function between calls `nk_begin_xxx` and `nk_end`
@@ -1721,7 +1721,7 @@ NK_API float nk_window_get_height(const struct nk_context*);
 /// ------------|-----------------------------------------------------------
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 ///
-/// Returns a pointer to window internal `nk_panel` state.
+/// Returns a pointer to window internal `nk_panel` states.
 */
 NK_API struct nk_panel* nk_window_get_panel(struct nk_context*);
 /*/// #### nk_window_get_content_region
@@ -1997,9 +1997,9 @@ NK_API void nk_window_set_focus(struct nk_context*, const char *name);
 */
 NK_API void nk_window_close(struct nk_context *ctx, const char *name);
 /*/// #### nk_window_collapse
-/// Updates collapse state of a window with given name
+/// Updates collapse states of a window with given name
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// void nk_window_collapse(struct nk_context*, const char *name, enum nk_collapse_states state);
+/// void nk_window_collapse(struct nk_context*, const char *name, enum nk_collapse_states states);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -2010,7 +2010,7 @@ NK_API void nk_window_close(struct nk_context *ctx, const char *name);
 */
 NK_API void nk_window_collapse(struct nk_context*, const char *name, enum nk_collapse_states state);
 /*/// #### nk_window_collapse_if
-/// Updates collapse state of a window with given name if given condition is met
+/// Updates collapse states of a window with given name if given condition is met
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_window_collapse_if(struct nk_context*, const char *name, enum nk_collapse_states, int cond);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2020,11 +2020,11 @@ NK_API void nk_window_collapse(struct nk_context*, const char *name, enum nk_col
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __name__    | Identifier of the window to either collapse or maximize
 /// __state__   | value out of nk_collapse_states section the window should be put into
-/// __cond__    | condition that has to be met to actually commit the collapse state change
+/// __cond__    | condition that has to be met to actually commit the collapse states change
 */
 NK_API void nk_window_collapse_if(struct nk_context*, const char *name, enum nk_collapse_states, int cond);
 /*/// #### nk_window_show
-/// updates visibility state of a window with given name
+/// updates visibility states of a window with given name
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_window_show(struct nk_context*, const char *name, enum nk_show_states);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2033,11 +2033,11 @@ NK_API void nk_window_collapse_if(struct nk_context*, const char *name, enum nk_
 /// ------------|-----------------------------------------------------------
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __name__    | Identifier of the window to either collapse or maximize
-/// __state__   | state with either visible or hidden to modify the window with
+/// __state__   | states with either visible or hidden to modify the window with
 */
 NK_API void nk_window_show(struct nk_context*, const char *name, enum nk_show_states);
 /*/// #### nk_window_show_if
-/// Updates visibility state of a window with given name if a given condition is met
+/// Updates visibility states of a window with given name if a given condition is met
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// void nk_window_show_if(struct nk_context*, const char *name, enum nk_show_states, int cond);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2046,8 +2046,8 @@ NK_API void nk_window_show(struct nk_context*, const char *name, enum nk_show_st
 /// ------------|-----------------------------------------------------------
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __name__    | Identifier of the window to either hide or show
-/// __state__   | state with either visible or hidden to modify the window with
-/// __cond__    | condition that has to be met to actually commit the visbility state change
+/// __state__   | states with either visible or hidden to modify the window with
+/// __cond__    | condition that has to be met to actually commit the visbility states change
 */
 NK_API void nk_window_show_if(struct nk_context*, const char *name, enum nk_show_states, int cond);
 /* =============================================================================
@@ -2805,7 +2805,7 @@ NK_API void nk_group_scrolled_end(struct nk_context*);
  * =============================================================================
 /// ### Tree
 /// Trees represent two different concept. First the concept of a collapsable
-/// UI section that can be either in a hidden or visibile state. They allow the UI
+/// UI section that can be either in a hidden or visibile states. They allow the UI
 /// user to selectively minimize the current set of visible UI to comprehend.
 /// The second concept are tree widgets for visual UI representation of trees.<br /><br />
 ///
@@ -2813,10 +2813,10 @@ NK_API void nk_group_scrolled_end(struct nk_context*);
 /// collapsable UI sections. All trees are started by calling of the
 /// `nk_tree_xxx_push_tree` functions and ended by calling one of the
 /// `nk_tree_xxx_pop_xxx()` functions. Each starting functions takes a title label
-/// and optionally an image to be displayed and the initial collapse state from
+/// and optionally an image to be displayed and the initial collapse states from
 /// the nk_collapse_states section.<br /><br />
 ///
-/// The runtime state of the tree is either stored outside the library by the caller
+/// The runtime states of the tree is either stored outside the library by the caller
 /// or inside which requires a unique ID. The unique ID can either be generated
 /// automatically from `__FILE__` and `__LINE__` with function `nk_tree_push`,
 /// by `__FILE__` and a user provided ID generated for example by loop index with
@@ -2850,16 +2850,16 @@ NK_API void nk_group_scrolled_end(struct nk_context*);
 /// #### Reference
 /// Function                    | Description
 /// ----------------------------|-------------------------------------------
-/// nk_tree_push                | Start a collapsable UI section with internal state management
-/// nk_tree_push_id             | Start a collapsable UI section with internal state management callable in a look
-/// nk_tree_push_hashed         | Start a collapsable UI section with internal state management with full control over internal unique ID use to store state
+/// nk_tree_push                | Start a collapsable UI section with internal states management
+/// nk_tree_push_id             | Start a collapsable UI section with internal states management callable in a look
+/// nk_tree_push_hashed         | Start a collapsable UI section with internal states management with full control over internal unique ID use to store states
 /// nk_tree_image_push          | Start a collapsable UI section with image and label header
-/// nk_tree_image_push_id       | Start a collapsable UI section with image and label header and internal state management callable in a look
-/// nk_tree_image_push_hashed   | Start a collapsable UI section with image and label header and internal state management with full control over internal unique ID use to store state
+/// nk_tree_image_push_id       | Start a collapsable UI section with image and label header and internal states management callable in a look
+/// nk_tree_image_push_hashed   | Start a collapsable UI section with image and label header and internal states management with full control over internal unique ID use to store states
 /// nk_tree_pop                 | Ends a collapsable UI section
 //
-/// nk_tree_state_push          | Start a collapsable UI section with external state management
-/// nk_tree_state_image_push    | Start a collapsable UI section with image and label header and external state management
+/// nk_tree_state_push          | Start a collapsable UI section with external states management
+/// nk_tree_state_image_push    | Start a collapsable UI section with image and label header and external states management
 /// nk_tree_state_pop           | Ends a collapsabale UI section
 ///
 /// #### nk_tree_type
@@ -2869,15 +2869,15 @@ NK_API void nk_group_scrolled_end(struct nk_context*);
 /// NK_TREE_TAB     | Non-highighted tree header closer to tree representations
 */
 /*/// #### nk_tree_push
-/// Starts a collapsable UI section with internal state management
+/// Starts a collapsable UI section with internal states management
 /// !!! WARNING
-///     To keep track of the runtime tree collapsable state this function uses
+///     To keep track of the runtime tree collapsable states this function uses
 ///     defines `__FILE__` and `__LINE__` to generate a unique ID. If you want
 ///     to call this function in a loop please use `nk_tree_push_id` or
 ///     `nk_tree_push_hashed` instead.
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// #define nk_tree_push(ctx, type, title, state)
+/// #define nk_tree_push(ctx, type, title, states)
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -2885,16 +2885,16 @@ NK_API void nk_group_scrolled_end(struct nk_context*);
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
 */
 #define
 nk_tree_push(ctx, type, title, state) nk_tree_push_hashed(ctx, type, title, state, NK_FILE_LINE, nk_strlen(NK_FILE_LINE), __LINE__)
 /*/// #### nk_tree_push_id
-/// Starts a collapsable UI section with internal state management callable in a look
+/// Starts a collapsable UI section with internal states management callable in a look
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// #define nk_tree_push_id(ctx, type, title, state, id)
+/// #define nk_tree_push_id(ctx, type, title, states, id)
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -2902,7 +2902,7 @@ nk_tree_push(ctx, type, title, state) nk_tree_push_hashed(ctx, type, title, stat
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 /// __id__      | Loop counter index if this function is called in a loop
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
@@ -2910,8 +2910,8 @@ nk_tree_push(ctx, type, title, state) nk_tree_push_hashed(ctx, type, title, stat
 #define
 nk_tree_push_id(ctx, type, title, state, id) nk_tree_push_hashed(ctx, type, title, state, NK_FILE_LINE, nk_strlen(NK_FILE_LINE), id)
 /*/// #### nk_tree_push_hashed
-/// Start a collapsable UI section with internal state management with full
-/// control over internal unique ID used to store state
+/// Start a collapsable UI section with internal states management with full
+/// control over internal unique ID used to store states
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// int nk_tree_push_hashed(struct nk_context*, enum nk_tree_type, const char *title, enum nk_collapse_states initial_state, const char *hash, int len,int seed);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2921,7 +2921,7 @@ nk_tree_push_id(ctx, type, title, state, id) nk_tree_push_hashed(ctx, type, titl
 /// __ctx__     | Must point to an previously initialized `nk_context` struct
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 /// __hash__    | Memory block or string to generate the ID from
 /// __len__     | Size of passed memory block or string in __hash__
 /// __seed__    | Seeding value if this function is called in a loop or default to `0`
@@ -2932,13 +2932,13 @@ NK_API int nk_tree_push_hashed(struct nk_context*, enum nk_tree_type, const char
 /*/// #### nk_tree_image_push
 /// Start a collapsable UI section with image and label header
 /// !!! WARNING
-///     To keep track of the runtime tree collapsable state this function uses
+///     To keep track of the runtime tree collapsable states this function uses
 ///     defines `__FILE__` and `__LINE__` to generate a unique ID. If you want
 ///     to call this function in a loop please use `nk_tree_image_push_id` or
 ///     `nk_tree_image_push_hashed` instead.
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// #define nk_tree_image_push(ctx, type, img, title, state)
+/// #define nk_tree_image_push(ctx, type, img, title, states)
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 /// Parameter   | Description
@@ -2947,18 +2947,18 @@ NK_API int nk_tree_push_hashed(struct nk_context*, enum nk_tree_type, const char
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __img__     | Image to display inside the header on the left of the label
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
 */
 #define
 nk_tree_image_push(ctx, type, img, title, state) nk_tree_image_push_hashed(ctx, type, img, title, state, NK_FILE_LINE, nk_strlen(NK_FILE_LINE), __LINE__)
 /*/// #### nk_tree_image_push_id
-/// Start a collapsable UI section with image and label header and internal state
+/// Start a collapsable UI section with image and label header and internal states
 /// management callable in a look
 ///
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// #define nk_tree_image_push_id(ctx, type, img, title, state, id)
+/// #define nk_tree_image_push_id(ctx, type, img, title, states, id)
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -2967,7 +2967,7 @@ nk_tree_image_push(ctx, type, img, title, state) nk_tree_image_push_hashed(ctx, 
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __img__     | Image to display inside the header on the left of the label
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 /// __id__      | Loop counter index if this function is called in a loop
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
@@ -2975,8 +2975,8 @@ nk_tree_image_push(ctx, type, img, title, state) nk_tree_image_push_hashed(ctx, 
 #define
 nk_tree_image_push_id(ctx, type, img, title, state, id) nk_tree_image_push_hashed(ctx, type, img, title, state, NK_FILE_LINE, nk_strlen(NK_FILE_LINE), id)
 /*/// #### nk_tree_image_push_hashed
-/// Start a collapsable UI section with internal state management with full
-/// control over internal unique ID used to store state
+/// Start a collapsable UI section with internal states management with full
+/// control over internal unique ID used to store states
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
 /// int nk_tree_image_push_hashed(struct nk_context*, enum nk_tree_type, struct nk_image, const char *title, enum nk_collapse_states initial_state, const char *hash, int len,int seed);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2987,7 +2987,7 @@ nk_tree_image_push_id(ctx, type, img, title, state, id) nk_tree_image_push_hashe
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __img__     | Image to display inside the header on the left of the label
 /// __title__   | Label printed in the tree header
-/// __state__   | Initial tree state value out of nk_collapse_states
+/// __state__   | Initial tree states value out of nk_collapse_states
 /// __hash__    | Memory block or string to generate the ID from
 /// __len__     | Size of passed memory block or string in __hash__
 /// __seed__    | Seeding value if this function is called in a loop or default to `0`
@@ -3007,9 +3007,9 @@ NK_API int nk_tree_image_push_hashed(struct nk_context*, enum nk_tree_type, stru
 */
 NK_API void nk_tree_pop(struct nk_context*);
 /*/// #### nk_tree_state_push
-/// Start a collapsable UI section with external state management
+/// Start a collapsable UI section with external states management
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// int nk_tree_state_push(struct nk_context*, enum nk_tree_type, const char *title, enum nk_collapse_states *state);
+/// int nk_tree_state_push(struct nk_context*, enum nk_tree_type, const char *title, enum nk_collapse_states *states);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -3017,15 +3017,15 @@ NK_API void nk_tree_pop(struct nk_context*);
 /// __ctx__     | Must point to an previously initialized `nk_context` struct after calling `nk_tree_xxx_push_xxx`
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __title__   | Label printed in the tree header
-/// __state__   | Persistent state to update
+/// __state__   | Persistent states to update
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
 */
 NK_API int nk_tree_state_push(struct nk_context*, enum nk_tree_type, const char *title, enum nk_collapse_states *state);
 /*/// #### nk_tree_state_image_push
-/// Start a collapsable UI section with image and label header and external state management
+/// Start a collapsable UI section with image and label header and external states management
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c
-/// int nk_tree_state_image_push(struct nk_context*, enum nk_tree_type, struct nk_image, const char *title, enum nk_collapse_states *state);
+/// int nk_tree_state_image_push(struct nk_context*, enum nk_tree_type, struct nk_image, const char *title, enum nk_collapse_states *states);
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ///
 /// Parameter   | Description
@@ -3034,7 +3034,7 @@ NK_API int nk_tree_state_push(struct nk_context*, enum nk_tree_type, const char 
 /// __img__     | Image to display inside the header on the left of the label
 /// __type__    | Value from the nk_tree_type section to visually mark a tree node header as either a collapseable UI section or tree node
 /// __title__   | Label printed in the tree header
-/// __state__   | Persistent state to update
+/// __state__   | Persistent states to update
 ///
 /// Returns `true(1)` if visible and fillable with widgets or `false(0)` otherwise
 */
@@ -3479,8 +3479,8 @@ NK_EDIT_EDITOR  = NK_EDIT_SELECTABLE|NK_EDIT_MULTILINE|NK_EDIT_ALLOW_TAB| NK_EDI
 enum nk_edit_events {
 NK_EDIT_ACTIVE      = NK_FLAG(0), /* edit widget is currently being modified */
 NK_EDIT_INACTIVE    = NK_FLAG(1), /* edit widget is not active and is not being modified */
-NK_EDIT_ACTIVATED   = NK_FLAG(2), /* edit widget went from state inactive to state active */
-NK_EDIT_DEACTIVATED = NK_FLAG(3), /* edit widget went from state active to state inactive */
+NK_EDIT_ACTIVATED   = NK_FLAG(2), /* edit widget went from states inactive to states active */
+NK_EDIT_DEACTIVATED = NK_FLAG(3), /* edit widget went from states active to states inactive */
 NK_EDIT_COMMITED    = NK_FLAG(4) /* edit widget has received an enter and lost focus */
 };
 NK_API nk_flags nk_edit_string(struct nk_context*, nk_flags, char *buffer, int *len, int max, nk_plugin_filter);
@@ -3874,7 +3874,7 @@ NK_API const char* nk_utf_at(const char *buffer, int length, int index, nk_rune 
     It still uses the `nk_user_font` struct and the two different approaches
     previously stated still work. The font baker is not located inside
     `nk_context` like all other systems since it can be understood as more of
-    an extension to nuklear and does not really depend on any `nk_context` state.
+    an extension to nuklear and does not really depend on any `nk_context` states.
 
     Font baker need to be initialized first by one of the nk_font_atlas_init_xxx
     functions. If you don't care about memory just call the default version
@@ -4403,11 +4403,11 @@ NK_API void nk_textedit_redo(struct nk_text_edit*);
             canvas = nk_window_get_canvas(ctx);
 
             struct nk_rect space;
-            enum nk_widget_layout_states state;
-            state = nk_widget(&space, ctx);
-            if (!state) return;
+            enum nk_widget_layout_states states;
+            states = nk_widget(&space, ctx);
+            if (!states) return;
 
-            if (state != NK_WIDGET_ROM)
+            if (states != NK_WIDGET_ROM)
                 update_your_widget_by_user_input(...);
             nk_fill_rect(canvas, space, 0, nk_rgb(255,0,0));
         }
@@ -4420,9 +4420,9 @@ NK_API void nk_textedit_redo(struct nk_text_edit*);
 
     Important to know if you want to create your own widgets is the `nk_widget`
     call. It allocates space on the panel reserved for this widget to be used,
-    but also returns the state of the widget space. If your widget is not seen and does
+    but also returns the states of the widget space. If your widget is not seen and does
     not have to be updated it is '0' and you can just return. If it only has
-    to be drawn the state will be `NK_WIDGET_ROM` otherwise you can do both
+    to be drawn the states will be `NK_WIDGET_ROM` otherwise you can do both
     update and draw your widget. The reason for separating is to only draw and
     update what is actually necessary which is crucial for performance.
 */
@@ -5481,7 +5481,7 @@ struct nk_command_buffer buffer;
 struct nk_panel *layout;
 float scrollbar_hiding_timer;
 
-/* persistent widget state */
+/* persistent widget states */
 struct nk_property_state property;
 struct nk_popup_state popup;
 struct nk_edit_state edit;
@@ -11653,7 +11653,7 @@ num_vertices = nk_tt__close_shape(vertices, num_vertices, was_off, start_off, sx
 start_off = !(flags & 1);
 if (start_off) {
 /* if we start off with an off-curve point, then when we need to find a point on the curve */
-/* where we can start, and we need to save some state for when we wraparound. */
+/* where we can start, and we need to save some states for when we wraparound. */
 scx = x;
 scy = y;
 if (!(vertices[off+i+1].type & 1)) {
@@ -15449,7 +15449,7 @@ if (iter->popup.win && iter->popup.win->seq != ctx->seq) {
 nk_free_window(ctx, iter->popup.win);
 iter->popup.win = 0;
 }
-/* remove unused window state tables */
+/* remove unused window states tables */
 {
 struct nk_table *n, *it = iter->tables;
 while (it) {
@@ -15499,7 +15499,7 @@ NK_ASSERT(ctx);
 NK_ASSERT(win);
 if (!ctx || !win) return;
 
-/* save buffer fill state for popup */
+/* save buffer fill states for popup */
 buf = &win->popup.buf;
 buf->begin = win->buffer.end;
 buf->end = win->buffer.end;
@@ -15971,7 +15971,7 @@ nk_zero(ctx->current->layout, sizeof(struct nk_panel));
 ctx->current->layout->type = panel_type;
 return 0;
 }
-/* pull state into local stack */
+/* pull states into local stack */
 style = &ctx->style;
 font = style->font;
 win = ctx->current;
@@ -16503,7 +16503,7 @@ win->next = 0;
 win->prev = 0;
 
 while (it) {
-/*free window state tables */
+/*free window states tables */
 struct nk_table *n = it->next;
 nk_remove_table(win, it);
 nk_free_table(ctx, it);
@@ -18688,7 +18688,7 @@ style->tab.rounding, background->data.color);
 }
 } else text.background = style->window.background;
 
-/* update node state */
+/* update node states */
 in = (!(layout->flags & NK_WINDOW_ROM)) ? &ctx->input: 0;
 in = (in && widget_state == NK_WIDGET_VALID) ? &ctx->input : 0;
 if (nk_button_behavior(&ws, header, in, NK_BUTTON_DEFAULT))
@@ -18752,7 +18752,7 @@ int title_len = 0;
 nk_hash tree_hash = 0;
 nk_uint *state = 0;
 
-/* retrieve tree state from internal widget state tables */
+/* retrieve tree states from internal widget states tables */
 if (!hash) {
 title_len = (int)nk_strlen(title);
 tree_hash = nk_murmur_hash(title, (int)title_len, (nk_hash)line);
@@ -18936,7 +18936,7 @@ int title_len = 0;
 nk_hash tree_hash = 0;
 nk_uint *state = 0;
 
-/* retrieve tree state from internal widget state tables */
+/* retrieve tree states from internal widget states tables */
 if (!hash) {
 title_len = (int)nk_strlen(title);
 tree_hash = nk_murmur_hash(title, (int)title_len, (nk_hash)line);
@@ -21259,7 +21259,7 @@ in->mouse.buttons[NK_BUTTON_LEFT].clicked_pos.x = logical_cursor->x;
 }
 }
 
-/* slider widget state */
+/* slider widget states */
 if (nk_input_is_mouse_hovering_rect(in, bounds))
 *state = NK_WIDGET_STATE_HOVERED;
 if (*state & NK_WIDGET_STATE_HOVER &&
@@ -21444,7 +21444,7 @@ layout = win->layout;
 
 state = nk_widget(&bounds, ctx);
 if (!state) return ret;
-in = (/*state == NK_WIDGET_ROM || */ layout->flags & NK_WINDOW_ROM) ? 0 : &ctx->input;
+in = (/*states == NK_WIDGET_ROM || */ layout->flags & NK_WINDOW_ROM) ? 0 : &ctx->input;
 
 old_value = *value;
 *value = nk_do_slider(&ctx->last_widget_state, &win->buffer, bounds, min_value,
@@ -21505,7 +21505,7 @@ in->mouse.buttons[NK_BUTTON_LEFT].clicked_pos.x = cursor.x + cursor.w/2.0f;
 *state |= NK_WIDGET_STATE_ACTIVE;
 }
 }
-/* set progressbar widget state */
+/* set progressbar widget states */
 if (*state & NK_WIDGET_STATE_HOVER && !nk_input_is_mouse_prev_hovering_rect(in, r))
 *state |= NK_WIDGET_STATE_ENTERED;
 else if (nk_input_is_mouse_prev_hovering_rect(in, r))
@@ -22117,7 +22117,7 @@ find->x += nk_textedit_get_width(state, first, i, font);
 NK_INTERN void
 nk_textedit_clamp(struct nk_text_edit *state)
 {
-/* make the selection/cursor state valid if client altered the string */
+/* make the selection/cursor states valid if client altered the string */
 int n = state->string.len;
 if (NK_TEXT_HAS_SELECTION(state)) {
 if (state->select_start > n) state->select_start = n;
@@ -22639,7 +22639,7 @@ nk_textedit_discard_undo(struct nk_text_undo_state *state)
 {
 /* discard the oldest entry in the undo list */
 if (state->undo_point > 0) {
-/* if the 0th undo state has characters, clean those up */
+/* if the 0th undo states has characters, clean those up */
 if (state->undo_rec[0].char_storage >= 0) {
 int n = state->undo_rec[0].insert_length, i;
 /* delete n characters from all other records */
@@ -22667,7 +22667,7 @@ nk_textedit_discard_redo(struct nk_text_undo_state *state)
 nk_size num;
 int k = NK_TEXTEDIT_UNDOSTATECOUNT-1;
 if (state->redo_point <= k) {
-/* if the k'th undo state has characters, clean those up */
+/* if the k'th undo states has characters, clean those up */
 if (state->undo_rec[k].char_storage >= 0) {
 int n = state->undo_rec[k].insert_length, i;
 /* delete n characters from all other records */
@@ -22880,7 +22880,7 @@ NK_LIB void
 nk_textedit_clear_state(struct nk_text_edit *state, enum nk_text_edit_type type,
 nk_plugin_filter filter)
 {
-/* reset the state to default */
+/* reset the states to default */
 state->undo.undo_point = 0;
 state->undo.undo_char_point = 0;
 state->undo.redo_point = NK_TEXTEDIT_UNDOSTATECOUNT;
@@ -23130,7 +23130,7 @@ row_height = (flags & NK_EDIT_MULTILINE)? font->height + style->row_padding: are
 old_clip = out->clip;
 nk_unify(&clip, &old_clip, area.x, area.y, area.x + area.w, area.y + area.h);
 
-/* update edit state */
+/* update edit states */
 prev_state = (char)edit->active;
 is_hovered = (char)nk_input_is_mouse_hovering_rect(in, bounds);
 if (in && in->mouse.buttons[NK_BUTTON_LEFT].clicked && in->mouse.buttons[NK_BUTTON_LEFT].down) {
@@ -23260,7 +23260,7 @@ cursor_follow = nk_true;
 }
 }
 
-/* set widget state */
+/* set widget states */
 if (edit->active)
 *state = NK_WIDGET_STATE_ACTIVE;
 else nk_widget_state_reset(state);
@@ -24628,7 +24628,7 @@ if (value_changed) {
 color->a = hsva[3];
 *state = NK_WIDGET_STATE_ACTIVE;
 }
-/* set color picker widget state */
+/* set color picker widget states */
 if (nk_input_is_mouse_hovering_rect(in, *bounds))
 *state = NK_WIDGET_STATE_HOVERED;
 if (*state & NK_WIDGET_STATE_HOVER && !nk_input_is_mouse_prev_hovering_rect(in, *bounds))
@@ -25819,7 +25819,7 @@ nk_tooltip(ctx, buf);
 /// - 2016/11/10 (1.28.1)- Fixed some warnings and C++ error
 /// - 2016/11/10 (1.28.0)- Added additional `nk_button` versions which allows to directly
 ///                        pass in a style struct to change buttons visual.
-/// - 2016/11/10 (1.27.0)- Added additional 'nk_tree' versions to support external state
+/// - 2016/11/10 (1.27.0)- Added additional 'nk_tree' versions to support external states
 ///                        storage. Just like last the `nk_group` commit the main
 ///                        advantage is that you optionally can minimize nuklears runtime
 ///                        memory consumption or handle hash collisions.
